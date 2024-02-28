@@ -1,0 +1,5 @@
+package com.pravass.project.model;
+
+public class Registration {
+
+}

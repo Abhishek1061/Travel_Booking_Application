@@ -1,0 +1,116 @@
+package com.pravass.project.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.pravass.project.model.Registration;
+import com.pravass.project.repository.RegistrationRepository;
+
+@Controller
+public class RegistrationController {
+	
+	@Autowired
+	RegistrationRepository repo ;
+
+	@GetMapping("/reg")
+	public String registrationForm() {
+		return "register";
+	}
+
+	@PostMapping("/home")
+	public String homePage(@ModelAttribute Registration registration) {
+		System.out.println(registration);
+		repo.save(registration);
+		return "home";
+	}
+
+	@GetMapping("/get")
+	public List<Registration> getValue() {
+		System.out.println(repo.findAll()); // findAll() method with List<> return type we get output in web.
+		return repo.findAll(); // @Restcontroller is needed to show JSON
+	}
+
+	@RequestMapping(path="/del/{email}" ,method = RequestMethod.DELETE)
+	public void deleteValue(@PathVariable String email) {
+		repo.deleteById(email);
+		System.out.println("Deleted you profil." + email);
+	}
+	
+	@PutMapping("update/{email}")
+	public String updateEmail(@PathVariable String email, @RequestBody Employee updatedEmployee) {
+		Optional<Registration> optionalEmployee = repo.findById(email);
+		if(optionalEmployee.isPresent()) {
+			Employee exisitingEmployee = optionalEmployee.get();
+			exisitingEmployee.setName(updatedEmployee.getName());
+			exisitingEmployee.setEmail(updatedEmployee.getEmail());
+			exisitingEmployee.setPassword(updatedEmployee.getPassword());
+			exisitingEmployee.setCountry(updatedEmployee.getCountry());
+			exisitingEmployee.setContact(updatedEmployee.getContact());
+			repo.save(exisitingEmployee);
+			return "register";
+		}else {
+			return "error";
+		}
+	}
+	
+	@PutMapping("/updateName/{email}/{name}")
+	public String updateName(@PathVariable String email, @PathVariable String name) {
+	    // Find the employee by email
+	    Employee employee = repo.findByEmail(email);
+	    
+	    // Check if employee exists
+	    if (employee != null) {
+	        // Update the name
+	        employee.setName(name);
+	        
+	        // Save the updated employee
+	        repo.save(employee);
+	        
+	        // Return the name of the view to render
+	        return "Name" + name + "updated Successfully"; // Assuming "index" is the name of the view you want to render after updating
+	    } else {
+	        // Handle the case where employee with the given email is not found
+	        // You can return an error view or handle it according to your application's logic
+	        return "error"; // For example, if you have an error view named "error"
+	    }
+	}
+	
+	@PutMapping("/updatePassword/{email}/{password}")
+	public String updatePassword(@PathVariable String email, @PathVariable String password) {
+	    Employee employee = repo.findByEmail(email);
+
+	    if (employee != null) {
+	        employee.setPassword(password);
+	        repo.save(employee);
+	        return "Password" + password + "updated Successfully"; 
+	    } else {
+	        return "error"; 
+	    }
+	}
+	
+	@PutMapping("/updateCountry/{email}/{country}")
+	public String updateCountry(@PathVariable String email, @PathVariable String country) {
+	    Employee employee = repo.findByEmail(email);
+
+	    if (employee != null) {
+	        employee.setCountry(country);
+	        repo.save(employee);
+	        return "Country" + country + "updated Successfully"; 
+	    } else {
+	        return "error"; 
+	    }
+	}
+	
+	@PutMapp
+
+
+}

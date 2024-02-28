@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+</style>
+</head>
+<body>
+	<form action="home" method="post">
+		<div class="container1">
+			<h2>Registration Form</h2>
+			<br> <label for="name">Name</label><br> <input type="text"
+				id="name" name="name" pattern="[A-Za-z]+"><br> <br>
+			<label for="email">Email</label><br> <input type="email"
+				name="email" id="email" placeholder="@gmail.com"><br> <br>
+			<label for="password">Password</label><br> <input
+				type="password" id="password" name="password" min="8" maxlength="15">
+			<br> <br> <label for="DOB">Date of Birth</label><br> <input
+				type="date" id="DOB" name="DOB"><br> <br> <label
+				for="contact">Mobile Number</label><br> <input type="tel"
+				name="contact" id="contact" min="0" maxlength="13"> <br>
+			<br> <label for="country">Country</label> <select id="country"
+				name="country">
+				<option value="select">Select</option>
+				<option value="India">India</option>
+				<option value="USA">USA</option>
+				<option value="Japan">Japan</option>
+				<option value="Neitherland">Neitherland</option>
+				<option value="Nepal">Nepal</option>
+				<option value="Austrelia">Austrelia</option>
+				<option value="Brazil">Brazil</option>
+				<option value="Itely">Itely</option>
+				<option value="France">France</option>
+				<option value="South Korea">South Korea</option>
+				<option value="Taiwan">Taiwan</option>
+				<option value="ShriLanka">ShriLanka</option>
+			</select> <br> <br> <label for="country">State </label> <select
+				id="country" name="country">
+				<option value="select">Select</option>
+				<option value="India">Maharashtra</option>
+				<option value="USA">UP</option>
+				<option value="Japan">Andrapradesh</option>
+				<option value="Neitherland">Panjab</option>
+				<option value="Nepal">Rajasthan</option>
+				<option value="Austrelia">Gujrat</option>
+			</select> <br> <br> <input type="submit" value="Submit">
+		</div>
+	</form>
+</body>
+</html>

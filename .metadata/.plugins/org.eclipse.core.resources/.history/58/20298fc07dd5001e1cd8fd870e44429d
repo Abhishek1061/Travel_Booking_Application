@@ -1,0 +1,9 @@
+package com.pravass.project.controller;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.pravass.project.model.Registration;
+
+public interface RegistrationRepository extends JpaRepository<Registration, String> {
+
+}
