@@ -18,6 +18,7 @@ import com.pravass.project.model.Registration;
 import com.pravass.project.repository.RegistrationRepository;
 
 @Controller
+@RequestMapping("/registration")
 public class RegistrationController {
 	
 	@Autowired
@@ -28,17 +29,11 @@ public class RegistrationController {
 		return "registration";
 	}
 
-	@PostMapping("/addReg")
+	@PostMapping("/add")
 	public String addDetails(@ModelAttribute Registration registration) {
 		repo.save(registration);
 		return "home";
 	}
-
-//	@GetMapping("/get")
-//	public List<Registration> getValue() {
-//		System.out.println(repo.findAll()); // findAll() method with List<> return type we get output in web.
-//		return repo.findAll(); // @Restcontroller is needed to show JSON
-//	}
 
 	@RequestMapping("/delete/{email}")
 	public String deleteValue(@PathVariable String email) {
@@ -46,32 +41,11 @@ public class RegistrationController {
 		return "login";
 	}
 	
-	@PutMapping("update/{email}")
-	public String updateEmail(@PathVariable String email, @RequestBody Registration updatedReg) {
-		Optional<Registration> optionalEmployee = repo.findById(email);
-		if(optionalEmployee.isPresent()) {
-			Registration exisitingReg = optionalEmployee.get();
-			exisitingReg.setName(updatedReg.getName());
-			exisitingReg.setEmail(updatedReg.getEmail());
-			exisitingReg.setPassword(updatedReg.getPassword());
-			exisitingReg.setDOB(updatedReg.getDOB());
-			exisitingReg.setCountry(updatedReg.getCountry());
-			exisitingReg.setContact(updatedReg.getContact());
-			exisitingReg.setState(updatedReg.getState());
-			repo.save(exisitingReg);
-			return "register";
-		}else {
-			return "error";
-		}
-	}
 	
 	@PutMapping("/updateName/{email}/{name}")
 	public String updateName(@PathVariable String email, @PathVariable String name) {
 	    Registration registration = repo.findByEmail(email);
 	    if (registration != null) {
-	    	
-	    	
-	    	
 	    	registration.setName(name);
 	        repo.save(registration);
 	        return "Name" + name + "updated Successfully"; 
@@ -133,65 +107,32 @@ public class RegistrationController {
 	}
 	
 
-
+//	@GetMapping("/get")
+//	public List<Registration> getValue() {
+//		System.out.println(repo.findAll()); // findAll() method with List<> return type we get output in web.
+//		return repo.findAll(); // @Restcontroller is needed to show JSON
+//	}
+	
+//	@RequestMapping("/update/{email}")
+//	public String updateEmail(@PathVariable String email, @RequestBody Registration updatedReg) {
+//		System.out.println(updatedReg.getName());
+//		Optional<Registration> optionalEmployee = repo.findById(email);
+//		if(optionalEmployee.isPresent()) {
+//			Registration exisitingReg = optionalEmployee.get();
+//			exisitingReg.setName(updatedReg.getName());
+//			exisitingReg.setEmail(updatedReg.getEmail());
+//			exisitingReg.setPassword(updatedReg.getPassword());
+//			exisitingReg.setDOB(updatedReg.getDOB());
+//			exisitingReg.setCountry(updatedReg.getCountry());
+//			exisitingReg.setContact(updatedReg.getContact());
+//			exisitingReg.setState(updatedReg.getState());
+//			repo.save(exisitingReg);
+//			return "register";
+//		}else {
+//			return "error";
+//		}
+//	}
 
 }
 
-//
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.web.bind.annotation.*;
-//
-////@RestController
-//@Controller
-//@RequestMapping("/registration")
-//public class RegistrationController {
-//	
-//	@Autowired
-//	RegistrationRepository repo;
-//
-//	@GetMapping("/form")
-//	public String registrationForm() {
-//		return "register";
-//	}
-//
-//	@PostMapping("/add")
-//	public String addRegistration(@RequestBody Registration registration) {
-//		repo.save(registration);
-//		return "home";
-//	}
-//
-//	@GetMapping("/all")
-//	public List<Registration> getAllRegistrations() {
-//		return repo.findAll();
-//	}
-//
-//	@DeleteMapping("/delete/{email}")
-//	public ResponseEntity<String> deleteRegistration(@PathVariable String email) {
-//		if (repo.existsByEmail(email)) {
-//			repo.deleteById(email);
-//			return ResponseEntity.ok("Deleted profile with email: " + email);
-//		} else {
-//			return ResponseEntity.notFound().build();
-//		}
-//	}
-//	
-//	@PutMapping("/update/{email}")
-//	public ResponseEntity<Registration> updateRegistration(@PathVariable String email, @RequestBody Registration updatedReg) {
-//		Optional<Registration> optionalRegistration = repo.findById(email);
-//		if (optionalRegistration.isPresent()) {
-//			Registration existingReg = optionalRegistration.get();
-//			existingReg.setName(updatedReg.getName());
-//			existingReg.setEmail(updatedReg.getEmail());
-//			existingReg.setPassword(updatedReg.getPassword());
-//			existingReg.setDOB(updatedReg.getDOB());
-//			existingReg.setCountry(updatedReg.getCountry());
-//			existingReg.setContact(updatedReg.getContact());
-//			existingReg.setState(updatedReg.getState());
-//			repo.save(existingReg);
-//			return ResponseEntity.ok(existingReg);
-//		} else {
-//			return ResponseEntity.notFound().build();
-//		}
-//	}
-//}
-//
+

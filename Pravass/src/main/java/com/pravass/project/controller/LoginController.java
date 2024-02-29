@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 //import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,12 +19,13 @@ import com.pravass.project.repository.LoginRepository;
 
 @Controller
 //@RestController
+@RequestMapping("/login")
 public class LoginController {
 
 	@Autowired
 	LoginRepository repo;
 
-	@GetMapping("/loginform")
+	@GetMapping("/Form")
 	public String loginForm() {
 		return "login";
 	}
@@ -34,7 +36,8 @@ public class LoginController {
 		return "home";
 	}
 
-	//this API is already present in registration controller so delete it form either of files.
+	// this API is already present in registration controller so delete it form
+	// either of files.
 	@RequestMapping("/del/{email}")
 	public String deleteValue(@PathVariable String email) {
 		repo.deleteById(email);

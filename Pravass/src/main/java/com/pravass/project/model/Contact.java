@@ -23,6 +23,10 @@ public class Contact {
 	
 	@Column(name = "Message")
 	private String message;
+	
+	public Contact() {
+		//Default constructor
+	}
 
 	@Override
 	public String toString() {
