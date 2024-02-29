@@ -50,7 +50,7 @@ server.port=9090
 
 spring.datasource.url=jdbc:mysql://localhost:3306/Pravass
 spring.datasource.username=root
-spring.datasource.password=Abhi@1061
+spring.datasource.password=*******
 
 #Hibernet Configuration
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
