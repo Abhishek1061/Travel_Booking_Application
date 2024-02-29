@@ -55,26 +55,26 @@ Before running the API server, ensure to update the database configuration in th
 
 ```
 
-Once the application is running, you can access it at `http://localhost:8080`.
+Once the application is running, you can access it at `http://localhost:9090`.
 
 ## Usage
 
 ### Login
-- `GET localhost:8080/loginform`: Displays the login form.
-- `POST localhost:8080/homepage`: Handles login requests and redirects to the home page.
-- `DELETE localhost:8080/del/{email}`: Deletes a user's login information based on email.
-- `PUT localhost:8080/setValue/{email}/{password}`: Updates a user's password based on email.
+- `GET localhost:9090/loginform`: Displays the login form.
+- `POST localhost:9090/homepage`: Handles login requests and redirects to the home page.
+- `DELETE localhost:9090/del/{email}`: Deletes a user's login information based on email.
+- `PUT localhost:9090/setValue/{email}/{password}`: Updates a user's password based on email.
 
 ### Registration
-- `GET localhost:8080/reg`: Displays the registration form.
-- `POST localhost:8080/addReg`: Handles registration requests and redirects to the home page.
-- `DELETE localhost:8080/delete/{email}`: Deletes a user's registration information based on email.
-- `PUT localhost:8080/update/{email}`: Updates a user's registration information based on email.
-- `PUT localhost:8080/updateName/{email}/{name}`: Updates a user's name based on email.
-- `PUT localhost:8080/updatePassword/{email}/{password}`: Updates a user's password based on email.
-- `PUT localhost:8080/updateDOB/{email}/{dob}`: Updates a user's date of birth based on email.
-- `PUT localhost:8080/updateCountry/{email}/{country}`: Updates a user's country based on email.
-- `PUT localhost:8080/updateState/{email}/{state}`: Updates a user's state based on email.
+- `GET localhost:9090/reg`: Displays the registration form.
+- `POST localhost:9090/addReg`: Handles registration requests and redirects to the home page.
+- `DELETE localhost:9090/delete/{email}`: Deletes a user's registration information based on email.
+- `PUT localhost:9090/update/{email}`: Updates a user's registration information based on email.
+- `PUT localhost:9090/updateName/{email}/{name}`: Updates a user's name based on email.
+- `PUT localhost:9090/updatePassword/{email}/{password}`: Updates a user's password based on email.
+- `PUT localhost:9090/updateDOB/{email}/{dob}`: Updates a user's date of birth based on email.
+- `PUT localhost:9090/updateCountry/{email}/{country}`: Updates a user's country based on email.
+- `PUT localhost:9090/updateState/{email}/{state}`: Updates a user's state based on email.
 
 <!--
 ### Login
