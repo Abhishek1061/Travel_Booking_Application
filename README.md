@@ -46,13 +46,21 @@ The application provides several features for both travel agencies and customers
 Before running the API server, ensure to update the database configuration in the application.properties file. Adjust the port number, username, and password according to your local database configuration.
 
 ```
-    server.port=8080
+server.port=9090
 
-    spring.datasource.url=jdbc:mysql://localhost:3306/Pravass
-    spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-    spring.datasource.username=root
-    spring.datasource.password=*******
+spring.datasource.url=jdbc:mysql://localhost:3306/Pravass
+spring.datasource.username=root
+spring.datasource.password=Abhi@1061
 
+#Hibernet Configuration
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+#DevTools
+spring.devtools.livereload.enabled=true
+spring.devtools.restart.enabled=true 
+spring.devtools.remote.debug.enabled=true
 ```
 
 Once the application is running, you can access it at `http://localhost:9090`.
